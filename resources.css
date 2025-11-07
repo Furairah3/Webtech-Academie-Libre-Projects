@@ -1,0 +1,422 @@
+/* css/resources.css */
+/* ------------------- TOP NAVBAR ------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #9fbcdd;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-left img {
+  width: 180px;
+  height: auto;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar input {
+  width: 40%;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* ------------------- MAIN CONTAINER ------------------- */
+.main-container {
+  display: flex;
+  margin-top: 100px;
+  min-height: calc(100vh - 80px);
+}
+
+/* ------------------- MAIN SIDEBAR ------------------- */
+.main-sidebar {
+  width: 220px;
+  background-color: #144272;
+  color: #EAF6F6;
+  padding: 20px 0;
+  height: calc(100vh - 80px);
+  position: fixed;
+  left: 0;
+  top: 80px;
+  overflow-y: auto;
+}
+
+.main-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-sidebar li {
+  padding: 12px 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.main-sidebar li:hover,
+.main-sidebar li.active {
+  background-color: #00C2CB;
+  color: #0A2647;
+  font-weight: bold;
+}
+
+/* ------------------- PAGE CONTENT ------------------- */
+.page-content {
+  margin-left: 220px;
+  padding: 20px;
+  width: calc(100% - 220px);
+  background: #F5F6FA;
+  min-height: calc(100vh - 80px);
+}
+
+/* ------------------- RESOURCES LAYOUT ------------------- */
+.resources-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.filters-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.main-area {
+  flex: 1;
+}
+
+/* ------------------- CARD STYLES ------------------- */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+/* ------------------- SIDEBAR FILTERS ------------------- */
+.sidebar-card input[type="text"] 
+{
+  width: 90%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.sidebar-card h3 {
+  margin: 0 0 8px 0;
+  color: #003366;
+}
+
+.sidebar-card label {
+  display: block;
+  margin: 8px 0;
+  color: #444;
+}
+
+
+/* Add to your CSS */
+.video-thumb {
+  width: 120px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+  grid-column: 1 / -1;
+}
+/* ------------------- SUBJECTS GRID ------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .resources-layout {
+    flex-direction: column;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .filters-sidebar {
+    width: 100%;
+  }
+}
+
+.subject-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  transition: transform .14s ease, box-shadow .14s ease;
+  border: 2px solid transparent;
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  border-color: #0059b3;
+}
+
+.subject-card h3 {
+  margin: 0;
+  color: #003366;
+  font-size: 18px;
+}
+
+.subject-card p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background:#00C2CB;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #02858c;
+}
+
+
+/* ------------------- COURSE VIEW ------------------- */
+.course-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  background: transparent;
+  border: 1px solid #e6e6e6;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #003366;
+}
+
+.tab.active {
+  background: linear-gradient(90deg, #FFD700, #f3c84a);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.tab-panel {
+  padding: 10px 0;
+}
+
+/* ------------------- WEEK CARD ------------------- */
+.week-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 4px solid transparent;
+}
+
+.week-card.locked {
+  opacity: 0.55;
+  border-left-color: #ccc;
+}
+
+.week-meta {
+  flex: 1;
+}
+
+.week-title {
+  color: #003366;
+  font-weight: 600;
+  margin: 0;
+}
+
+.week-desc {
+  color: #666;
+  margin: 6px 0 0 0;
+  font-size: 13px;
+}
+
+/* ------------------- RESOURCES TOP ------------------- */
+.resources-top h1 {
+  margin: 0 0 6px 0;
+  color: #003366;
+}
+
+.resources-top .subtitle {
+  color: #666;
+  margin-top: 6px;
+}
+
+/* ------------------- SMALL SUBJECT LIST ------------------- */
+.small-sub {
+  margin: 6px 0;
+}
+
+/* ------------------- UTILITY CLASSES ------------------- */
+.hidden {
+  display: none;
+}
+
+/* ------------------- FOOTER ------------------- */
+.site-footer {
+  background: #003366;
+  color: #fff;
+  padding: 14px 20px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* ------------------- FOOTER ------------------- */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0A2647;
+  color: #EAF6F6;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 13px;
+  z-index: 1000;
+}
+
+/* Add to your resources.css file */
+.video-container {
+  width: 70%;
+  margin-left: 100px;
+  max-width: 560px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.video-container iframe {
+  border-radius: 12px;
+}
+
+.week-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  border-left: 4px solid #00C2CB;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.week-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.week-card.locked {
+  opacity: 0.7;
+  border-left-color: #ccc;
+  background: #f8f9fa;
+}
+
+.week-card.locked:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.mark-complete-btn {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mark-complete-btn:hover {
+  background: #218838;
+}
+
+/* Responsive video */
+@media (max-width: 768px) {
+  .video-container iframe {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container iframe {
+    height: 150px;
+  }
+}

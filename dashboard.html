@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X-Space Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navbar (Fixed) -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/LOGO_H.png" alt="X-Space Logo">
+    </div>
+    <input type="text" placeholder="Search resources...">
+    <div class="profile">
+      <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile">
+      <span>Chichibest</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul class="nav-links">
+      <li class="active"><a href="dashboard.html" data-section="dashboard"><span>🏠 Dashboard</span></a></li>
+      <li><a href="resources.html" data-section="subjects"><span>📚 resources</span></a></li>
+      <li><a href="quiz.html" data-section="subjects"><span>🧠 Quiz</span></a></li>
+      <li><a href="Homework.html" data-section="notes"><span>📝 Homework</span></a></li>
+      <li><a href="Progress.html" data-section="videos"><span>📊 Progress</span></a></li>
+      <li><a href="profile.html" data-section="profile"><span>📚 Profile</span></a></li>
+      <li><a href="#" data-section="logout"><span>🚪 Logout</span></a></li>
+      <li><a href="#" data-section="settings" ><span>⚙ Settings</span></a></li>
+    </ul>
+</div>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="welcome">
+      <h1>Welcome back, Chidima 👋</h2>
+      <p>Keep up your learning streak!</p>
+    </section>
+
+    <!-- Circular Progress Section -->
+    <section class="progress-section">
+      <div class="progress-card">
+        <h3>Overall Progress</h3>
+        <div class="circle">
+          <svg viewBox="0 0 36 36">
+            <path class="bg" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path class="progress" stroke-dasharray="60, 100" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          </svg>
+          <div class="percentage">60%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects">
+      <h2>Your Subjects</h2>
+      <div class="subject-cards">
+        <div class="card">
+          <h3>Mathematics</h3>
+          <p>3/5 notes completed</p>
+          <button>View Resources</button>
+        </div>
+        <div class="card">
+          <h3>Economics</h3>
+          <p>2/4 videos watched</p>
+          <button>View Resources</button>
+        </div>
+        <div class="card">
+          <h3>OOP (Java)</h3>
+          <p>4/6 assignments done</p>
+          <button>View Resources</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h2>Quick Links</h2>
+      <div class="links-grid">
+        <div class="link-box" id="notesBtn">📘 Notes</div>
+        <div class="link-box" id="videosBtn">🎥 Videos</div>
+        <div class="link-box" id="examsBtn">📄 Past Exams</div>
+        <div class="link-box" id="helpBtn">💬 Help</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Fixed Footer -->
+  <footer class="footer">
+    © 2025 Academie Libre Learning Platform — Made with ❤️ by Ashesi Students
+  </footer>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

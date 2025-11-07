@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #F5F7FA;
+  color: #0A2647;
+  overflow-x: hidden;
+}
+
+/* ------------------- TOP NAVBAR ------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #9fbcdd;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-left img {
+  width: 180px;
+  height: auto;
+}
+
+.navbar input {
+  width: 40%;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* ------------------- SIDEBAR ------------------- */
+.sidebar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px 0;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 5px 0;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background: #34495e;
+  color: #3498db;
+}
+
+.nav-links li.active a {
+  background: #3498db;
+  color: white;
+  border-right: 3px solid #2980b9;
+}
+
+.nav-links li a i {
+  width: 20px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 79px;
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 110px);
+  background-color: #144272;
+  color: #EAF6F6;
+  padding: 50px 0;
+  overflow-y: auto;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links a {
+  padding: 12px 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background-color: #00C2CB;
+  color: #0A2647;
+  font-weight: bold;
+}
+
+/* ------------------- MAIN CONTENT ------------------- */
+.main-content {
+  margin-left: 230px;
+  padding: 130px 30px 100px 30px;
+  min-height: calc(100vh - 120px);
+}
+
+/* Welcome */
+.welcome h1 {
+  color: #0A2647;
+  margin-bottom: 5px;
+}
+
+.welcome p {
+  color: #205295;
+  margin-bottom: 20px;
+}
+
+/* ------------------- CIRCULAR PROGRESS ------------------- */
+.progress-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.progress-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.circle {
+  position: relative;
+  width: 350px;
+  height: 150px;
+}
+
+svg {
+  transform: rotate(-90deg);
+  width: 150px;
+  height: 150px;
+}
+
+.bg {
+  fill: none;
+  stroke: #EAF6F6;
+  stroke-width: 3.8;
+}
+
+.progress {
+  fill: none;
+  stroke: #00C2CB;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-weight: bold;
+  color: #205295;
+}
+
+/* ------------------- SUBJECTS ------------------- */
+.subjects {
+  margin-top: 30px;
+}
+
+.subjects h2 {
+  color: #0A2647;
+  margin-bottom: 15px;
+}
+
+.subject-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #205295, #00C2CB);
+  color: white;
+  height: 150px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card button {
+  background: white;
+  color: #00C2CB;
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.card button:hover {
+  background: #00C2CB;
+  color: white;
+}
+
+/* ------------------- QUICK LINKS ------------------- */
+.quick-links {
+  margin-top: 40px;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.link-box {
+  background-color: #EAF6F6;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #0A2647;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.link-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ------------------- FOOTER ------------------- */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0A2647;
+  color: #EAF6F6;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 13px;
+  z-index: 1000;
+}

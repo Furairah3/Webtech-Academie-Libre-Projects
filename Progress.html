@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress & Profile - X-Space Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/profil_progress.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navbar (Fixed) -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/LOGO_H.png" alt="X-Space Logo">
+    </div>
+    <input type="text" placeholder="Search resources...">
+    <div class="profile">
+      <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile" id="navbar-profile-img">
+      <span id="navbar-username">Chichibest</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul class="nav-links">
+      <li ><a href="dashboard.html" data-section="dashboard"><span>🏠 Dashboard</span></a></li>
+      <li><a href="resources.html" data-section="subjects"><span>📚 resources</span></a></li>
+      <li><a href="quiz.html" data-section="subjects"><span>🧠 Quiz</span></a></li>
+      <li><a href="Homework.html" data-section="notes"><span>📝 Homework</span></a></li>
+      <li class="active" ><a href="Progress.html" data-section="videos"><span>📊 Progress</span></a></li>
+      <li><a href="profile.html" data-section="profile"><span>📚 Profile</span></a></li>
+      <li><a href="#" data-section="logout"><span>🚪 Logout</span></a></li>
+      <li><a href="#" data-section="settings" ><span>⚙ Settings</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="progress-container">
+      <div class="page-header">
+        <h1 class="page-title">Your Learning Progress</h1>
+        <div style="color: #666; font-size: 14px;">Last updated: <span id="last-updated">Today</span></div>
+      </div>
+
+      <div class="content-grid">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <div class="profile-image-container">
+            <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile" class="profile-image" id="profile-image">
+            <button class="change-image-btn" id="change-image-btn">📷</button>
+          </div>
+          
+          <div class="profile-info">
+            <div class="profile-name" id="profile-name">Chichibest</div>
+            <div class="profile-program" id="profile-program">Baccalaureat Program</div>
+          </div>
+
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-value" id="completed-weeks">0</div>
+              <div class="stat-label">Weeks Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="average-score">0%</div>
+              <div class="stat-label">Average Score</div>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn-edit" id="edit-profile">Edit Profile</button>
+            <button class="btn-signout" id="signout-btn">Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="progress-overview">
+          <h2 class="section-title">Learning Overview</h2>
+          
+          <div class="overview-stats">
+            <div class="overview-stat">
+              <div class="overview-value" id="total-subjects">5</div>
+              <div class="overview-label">Subjects</div>
+            </div>
+            <div class="overview-stat">
+              <div class="overview-value" id="completed-homework">0</div>
+              <div class="overview-label">Homework Completed</div>
+            </div>
+            <div class="overview-stat">
+              <div class="overview-value" id="quizzes-taken">0</div>
+              <div class="overview-label">Quizzes Taken</div>
+            </div>
+            <div class="overview-stat">
+              <div class="overview-value" id="study-streak">0</div>
+              <div class="overview-label">Day Streak</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--primary);">Weekly Progress</h3>
+          <div class="progress-chart" id="progress-chart">
+            <!-- Chart bars will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Subject Progress -->
+      <div class="subject-progress">
+        <h2 class="section-title">Subject Progress</h2>
+        <div class="subject-list" id="subject-list">
+          <!-- Subject items will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="achievements">
+        <h2 class="section-title">Achievements</h2>
+        <div class="badges-grid" id="badges-grid">
+          <!-- Badges will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal" id="edit-profile-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Profile</h3>
+        <button class="close-modal" id="close-edit-modal">&times;</button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="edit-username">Username</label>
+        <input type="text" class="form-input" id="edit-username" value="Chichibest">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="edit-program">Program</label>
+        <select class="form-input" id="edit-program">
+          <option value="Baccalaureat">Baccalaureat</option>
+          <option value="ABAC">ABAC</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Business">Business</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="edit-email">Email</label>
+        <input type="email" class="form-input" id="edit-email" value="chichibest@academie.edu">
+      </div>
+      
+      <div class="form-actions">
+        <button class="btn-cancel" id="cancel-edit">Cancel</button>
+        <button class="btn-save" id="save-profile">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Image Modal -->
+  <div class="modal" id="change-image-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Change Profile Image</h3>
+        <button class="close-modal" id="close-image-modal">&times;</button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Upload New Image</label>
+        <input type="file" class="form-input" id="image-upload" accept="image/*">
+      </div>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <div id="image-preview" style="width: 150px; height: 150px; border-radius: 50%; border: 2px dashed #ddd; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #666;">
+          Preview will appear here
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button class="btn-cancel" id="cancel-image">Cancel</button>
+        <button class="btn-save" id="save-image">Save Image</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Footer -->
+  <footer class="footer">
+    © 2025 Academie Libre Learning Platform — Made with ❤ by Ashesi Students
+  </footer>
+    <script src="JS/profil_progress.js"></script>
+</body>
+</html>

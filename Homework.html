@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework - X-Space Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/Homework.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<script>
+console.log("HTML file loaded");
+// Test if elements exist
+console.log("Homework intro element:", document.getElementById('homework-intro'));
+console.log("Subject select element:", document.getElementById('subject-select'));
+</script>
+
+<body>
+  <style>
+    .feedback-report {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.feedback-report h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.feedback-report h4 {
+    color: #34495e;
+    margin: 12px 0 8px 0;
+}
+
+.stats-section, .assessment-section, .improvement-section, 
+.word-analysis, .suggestions-section, .subject-advice {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #3498db;
+}
+
+.positive-feedback {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #d4edda;
+    border-radius: 6px;
+    border-left: 4px solid #28a745;
+}
+
+.word-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.word-item {
+    padding: 6px;
+    background: white;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.advanced-word {
+    background: #e8f4fd;
+    border-left: 3px solid #3498db;
+}
+
+.feedback-report ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.feedback-report li {
+    margin-bottom: 4px;
+}
+  </style>
+
+  <!-- Top Navbar (Fixed) -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/LOGO_H.png" alt="X-Space Logo">
+    </div>
+    <input type="text" placeholder="Search resources...">
+    <div class="profile">
+      <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile">
+      <span>Chichibest</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul class="nav-links">
+      <li ><a href="dashboard.html" data-section="dashboard"><span>🏠 Dashboard</span></a></li>
+      <li><a href="resources.html" data-section="subjects"><span>📚 resources</span></a></li>
+      <li><a href="quiz.html" data-section="subjects"><span>🧠 Quiz</span></a></li>
+      <li class="active" ><a href="Homework.html" data-section="notes"><span>📝 Homework</span></a></li>
+      <li><a href="Progress.html" data-section="videos"><span>📊 Progress</span></a></li>
+      <li><a href="profile.html" data-section="profile"><span>📚 Profile</span></a></li>
+      <li><a href="#" data-section="logout"><span>🚪 Logout</span></a></li>
+      <li><a href="#" data-section="settings" ><span>⚙ Settings</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="homework-container">
+      <!-- Homework Introduction -->
+      <div class="homework-intro" id="homework-intro">
+        <h1>Weekly Homework</h1>
+        <p>Select a subject and complete homework exercises for each week. You must score at least 12/20 to unlock the next week.</p>
+        
+        <select class="subject-select" id="subject-select">
+          <option value="" disabled selected>Select a subject</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="physics">Physics</option>
+          <option value="english">English</option>
+          <option value="economics">Economics</option>
+          <option value="biology">Biology</option>
+        </select>
+        
+        <div class="week-selection" id="week-selection">
+          <!-- Week cards will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Homework Area -->
+      <div class="homework-area" id="homework-area">
+        <div class="homework-header">
+          <h2 class="homework-title" id="homework-title">Week 1: Introduction to Algebra</h2>
+          <button class="btn-back" id="back-to-subjects">← Back to Subjects</button>
+        </div>
+
+        <div class="instructions">
+          <h4>📋 How to Complete Your Homework:</h4>
+          <ol>
+            <li><strong>Download</strong> the exercise PDF</li>
+            <li><strong>Solve</strong> the problems on paper</li>
+            <li><strong>Upload</strong> your completed work</li>
+            <li><strong>Receive AI feedback</strong> and your grade</li>
+            <li><strong>Resubmit</strong> if needed (minimum 12/20 required)</li>
+          </ol>
+        </div>
+
+        <div class="homework-content">
+          <!-- Exercise Section -->
+          <div class="exercise-section">
+            <h3 class="section-title">📄 Exercise</h3>
+            <div class="exercise-description" id="exercise-description">
+              Download the exercise file and solve the problems on paper. Make sure to show all your work and calculations.
+            </div>
+            <button class="btn-download" id="download-exercise">
+              📥 Download Exercise PDF
+            </button>
+          </div>
+
+          <!-- Submission Section -->
+          <div class="submission-section">
+            <h3 class="section-title">📤 Submission</h3>
+            <div class="upload-area" id="upload-area">
+              <div class="upload-icon">📁</div>
+              <div class="upload-text">Drag & drop your completed homework here or click to browse</div>
+              <input type="file" id="file-input" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+              <button class="btn-upload" id="browse-files">Browse Files</button>
+              <div class="file-info" id="file-info"></div>
+            </div>
+
+            <button class="btn-upload" id="submit-homework" style="width: 100%; display: none;">Submit for AI Review</button>
+
+            <!-- Submission Status -->
+            <div class="submission-status" id="submission-status">
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Fixed Footer -->
+  <footer class="footer">
+    © 2025 Academie Libre Learning Platform — Made with ❤ by Ashesi Students
+  </footer>
+  <script src="js/Homework.js"></script>
+</body>
+<!-- Add this right before closing </body> tag -->
+<script>
+// Emergency fallback
+if (typeof initializeHomeworkSystem === 'undefined') {
+    console.error("Homework.js not loaded properly!");
+    setTimeout(() => {
+        if (document.getElementById('subject-select')) {
+            document.getElementById('subject-select').innerHTML = `
+                <option value="">Select subject</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="english">English</option>
+            `;
+        }
+    }, 1000);
+}
+</script>
+</html>

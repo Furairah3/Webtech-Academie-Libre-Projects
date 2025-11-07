@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academie libre Portal | Login & Register</title>
+  <link rel="stylesheet" href="css/generalStyle.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Left Side (Form Section) -->
+    <div class="form-container">
+        <img src="images/LOGO_H.png" alt="Académie Libre Logo" class="logo" id="main-logo">
+        
+        <!-- Login Form -->
+        <form class="form" id="login-form">
+            <h2>Login to Your Account</h2>
+            <input type="text" id="login-identifier" placeholder="Email or Username" required>
+            <span id="login-identifier-error" class="error-message hidden"></span>
+            
+            <input type="password" id="login-password" placeholder="Password" required>
+            <span id="login-password-error" class="error-message hidden"></span>
+            
+            <a href="#" class="forgot">Forgot Password?</a>
+            
+            <div id="login-error" class="error-message hidden"></div>
+            
+            <button type="submit" class="btn">Login</button>
+            <p class="switch">Don't have an account? 
+            <a href="#register-form" id="show-register">Register here</a>
+            </p>
+        </form>
+
+      <!-- Registration Form (hidden by default) -->
+      <form class="form hidden" id="register-form">
+        <h2>Create an Account</h2>
+        
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <span id="fname-error" class="error-message hidden"></span>
+        
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+        <span id="lname-error" class="error-message hidden"></span>
+        
+        <input class="inputs" type="date" id="dob" name="dob" required>
+        <span id="dob-error" class="error-message hidden"></span>
+        
+        <select class="inputs" id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <span id="gender-error" class="error-message hidden"></span>
+        
+        <input type="email" id="email" placeholder="Email" required>
+        <span id="email-error" class="error-message hidden"></span>
+        
+        <div style="display: flex; gap: 5px;">
+          <select id="countryCode" name="countryCode" class="inputs" style="width: 25%;">
+            <option value="+233">🇬🇭 +233</option>
+            <option value="+234">🇳🇬 +234</option>
+            <option value="+225">🇨🇮 +225</option>
+            <option value="+226">🇧🇫 +226</option>
+          </select>
+          <input class="inputs" style="width: 75%;" type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <span id="phone-error" class="error-message hidden"></span>
+        
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span id="password-error" class="error-message hidden"></span>
+        <div id="password-strength" class="password-strength hidden"></div>
+        
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <span id="confirmPassword-error" class="error-message hidden"></span>
+        
+        <select class="inputs" id="role" name="role" required>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+        <span id="role-error" class="error-message hidden"></span>
+        
+        <div id="register-error" class="error-message hidden"></div>
+        
+        <button type="submit" class="btn">Register</button>
+        <p class="switch">Already have an account? 
+          <a href="#" id="show-login">Login here</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Right Side (Welcome image) -->
+    <div class="welcome-container">
+      <div class="welcome-text">
+        <!--<h2>Welcome to X-Space!</h2> -->
+        <p>Your one-stop platform for subjects, notes, videos, and past exams.  
+        Login or create an account to begin your learning journey.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/script.js"></script>
+
+</body>
+</html>
