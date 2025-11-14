@@ -1,0 +1,386 @@
+/* Homework.css */
+    :root {
+      --primary: #003366;
+      --accent: #FFD700;
+      --bg: #F5F6FA;
+      --text: #333333;
+      --hover: #0059b3;
+      --card-bg: #ffffff;
+      --correct: #28a745;
+      --incorrect: #dc3545;
+      --locked: #ccc;
+      --warning: #ffc107;
+    }
+
+    /* Homework specific styles */
+    .homework-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .homework-intro {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .homework-intro h1 {
+      color: #004aad;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .homework-intro p {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .subject-select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Week Selection */
+    .week-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .week-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .week-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .week-card.available {
+      border-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .week-card.available:hover {
+      border-color: var(--primary);
+    }
+
+    .week-card.locked {
+      background: #f8f9fa;
+      color: #6c757d;
+      cursor: not-allowed;
+    }
+
+    .week-card.completed {
+      border-color: var(--correct);
+      background: #f8fff9;
+    }
+
+    .week-card.pending {
+      border-color: var(--warning);
+      background: #fffbf0;
+    }
+
+    .week-number {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .week-title {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .week-status {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .status-available {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .status-locked {
+      background: var(--locked);
+      color: #666;
+    }
+
+    .status-completed {
+      background: var(--correct);
+      color: white;
+    }
+
+    .status-pending {
+      background: var(--warning);
+      color: #000;
+    }
+
+    .week-score {
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .score-pass {
+      color: var(--correct);
+    }
+
+    .score-fail {
+      color: var(--incorrect);
+    }
+
+    /* Homework Area */
+    .homework-area {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      display: none;
+    }
+
+    .homework-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .homework-title {
+      font-size: 24px;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .btn-back {
+      background: #6c757d;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-back:hover {
+      background: #5a6268;
+    }
+
+    .homework-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .homework-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .exercise-section, .submission-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .exercise-description {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn-download {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-download:hover {
+      background: var(--hover);
+    }
+
+    .upload-area {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+
+    .upload-area:hover {
+      border-color: var(--primary);
+    }
+
+    .upload-area.dragover {
+      border-color: var(--primary);
+      background: #eaf1fb;
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+
+    .upload-text {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    .btn-upload {
+      background: var(--accent);
+      color: #111;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-upload:hover {
+      background: #e6b800;
+    }
+
+    .file-info {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .submission-status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .status-pending {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+    }
+
+    .status-graded {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      color: #0c5460;
+    }
+
+    .grade-display {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .grade-pass {
+      color: var(--correct);
+    }
+
+    .grade-fail {
+      color: var(--incorrect);
+    }
+
+    .feedback-section {
+      margin-top: 20px;
+    }
+
+    .feedback-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .feedback-content {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .btn-resubmit {
+      background: var(--incorrect);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .btn-resubmit:hover {
+      background: #c82333;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Instructions */
+    .instructions {
+      background: #e7f3ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .instructions h4 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    .instructions ol {
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
