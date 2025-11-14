@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resources - Académie Libre</title>
+  <!--<link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/dashboard.css"> -->
+  <link rel="stylesheet" href="css/generalStyle.css">
+  <link rel="stylesheet" href="./css/resources.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navbar (Fixed) -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/LOGO_H.png" alt="X-Space Logo">
+    </div>
+    <input type="text" placeholder="Search resources...">
+
+    <div class="profile">
+      <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile">
+      <span id="user-name">Chichibest</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Main Sidebar -->
+    <div class="sidebar">
+      <ul class="nav-links">
+        <li ><a href="dashboard.html" data-section="dashboard"><span>🏠 Dashboard</span></a></li>
+        <li class="active" ><a href="resources.html" data-section="subjects"><span>📚 resources</span></a></li>
+        <li><a href="quiz.html" data-section="subjects"><span>🧠 Quiz</span></a></li>
+        <li><a href="Homework.html" data-section="notes"><span>📝 Homework</span></a></li>
+        <li><a href="Progress.html" data-section="videos"><span>📊 Progress</span></a></li>
+        <li><a href="profile.html" data-section="profile"><span>📚 Profile</span></a></li>
+        <li><a href="#" data-section="logout"><span>🚪 Logout</span></a></li>
+        <li><a href="#" data-section="settings" ><span>⚙ Settings</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Page content -->
+    <div class="page-content">
+      <section class="resources-top">
+        <h1>Your Subjects & Learning Resources</h1>
+        <p class="subtitle">Program: <span id="user-program">Baccalaureat</span></p>
+      </section>
+
+      <div class="resources-layout">
+        <!-- Left: sidebar filters -->
+        <aside class="filters-sidebar">
+          <div class="card sidebar-card">
+            <input type="text" id="search-input" placeholder="Search subjects or resources..." />
+          </div>
+
+          <div class="card sidebar-card">
+            <h3>Filters</h3>
+            <label><input type="checkbox" id="filter-notes" checked> Notes</label>
+            <label><input type="checkbox" id="filter-videos" checked> Videos</label>
+            <label><input type="checkbox" id="filter-exams" checked> Past Exams</label>
+          </div>
+
+          <div class="card sidebar-card">
+            <h3>Your Subjects</h3>
+            <div id="subject-list-small">
+              <div class="small-sub">
+                <button class="btn-ghost" style="width:100%; text-align:left; margin:6px 0;">Mathematics</button>
+              </div>
+              <div class="small-sub">
+                <button class="btn-ghost" style="width:100%; text-align:left; margin:6px 0;">Physics</button>
+              </div>
+              <div class="small-sub">
+                <button class="btn-ghost" style="width:100%; text-align:left; margin:6px 0;">English</button>
+              </div>
+              <div class="small-sub">
+                <button class="btn-ghost" style="width:100%; text-align:left; margin:6px 0;">Economics</button>
+              </div>
+              <div class="small-sub">
+                <button class="btn-ghost" style="width:100%; text-align:left; margin:6px 0;">Biology</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right: main content -->
+        <section class="main-area">
+          <!-- SUBJECTS GRID -->
+          <div id="subjects-view">
+            <h2>Subjects</h2>
+            <div id="subjects-grid" class="grid">
+              <!-- Mathematics Card -->
+              <div class="subject-card card">
+                <div>
+                  <h3>Mathematics</h3>
+                  <p>Core topics & weekly lessons</p>
+                </div>
+                <div style="align-self:flex-end;">
+                  <button class="btn-primary">View Materials</button>
+                </div>
+              </div>
+              
+              <!-- Physics Card -->
+              <div class="subject-card card">
+                <div>
+                  <h3>Physics</h3>
+                  <p>Mechanics & more</p>
+                </div>
+                <div style="align-self:flex-end;">
+                  <button class="btn-primary">View Materials</button>
+                </div>
+              </div>
+              
+              <!-- English Card -->
+              <div class="subject-card card">
+                <div>
+                  <h3>English</h3>
+                  <p>Grammar & essays</p>
+                </div>
+                <div style="align-self:flex-end;">
+                  <button class="btn-primary">View Materials</button>
+                </div>
+              </div>
+              
+              <!-- Economics Card -->
+              <div class="subject-card card">
+                <div>
+                  <h3>Economics</h3>
+                  <p>Basics & past papers</p>
+                </div>
+                <div style="align-self:flex-end;">
+                  <button class="btn-primary">View Materials</button>
+                </div>
+              </div>
+              
+              <!-- Biology Card -->
+              <div class="subject-card card">
+                <div>
+                  <h3>Biology</h3>
+                  <p>Cells to ecology</p>
+                </div>
+                <div style="align-self:flex-end;">
+                  <button class="btn-primary">View Materials</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- COURSE VIEW (hidden until user clicks a subject) -->
+          <div id="course-view" class="hidden">
+            <div class="course-header">
+              <button id="back-to-subjects" class="btn-ghost">← Back to Subjects</button>
+              <div>
+                <h2 id="course-title">Mathematics</h2>
+                <p id="course-subtitle">Week-by-week learning materials</p>
+              </div>
+            </div>
+
+            <!-- ADD THIS MISSING TABS SECTION -->
+            <div class="tabs">
+              <button class="tab active" data-tab="videos">Videos</button>
+              <button class="tab" data-tab="notes">Notes</button>
+              <button class="tab" data-tab="extra">Extra Resources</button>
+              <button class="tab" data-tab="exams">Past Exams</button>
+            </div>
+
+            <!-- tab contents -->
+            <div id="tab-contents">
+              <!-- Videos -->
+              <div class="tab-panel" id="tab-videos">
+                <div id="videos-list"></div>
+              </div>
+
+              <!-- Notes -->
+              <div class="tab-panel hidden" id="tab-notes">
+                <div id="notes-list"></div>
+              </div>
+
+              <!-- Extra -->
+              <div class="tab-panel hidden" id="tab-extra">
+                <div id="extra-list"></div>
+              </div>
+
+              <!-- Exams -->
+              <div class="tab-panel hidden" id="tab-exams">
+                <div id="exams-list"></div>
+              </div>
+            </div>
+          </div> <!-- end course-view -->
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Footer -->
+  <footer class="footer">
+    © 2025 Academie Libre Learning Platform — Made with ❤️ by Ashesi Students
+  </footer>
+
+  <!-- resources JS -->
+  <script type="module" src="./js/resources.js"></script>
+</body>
+</html>

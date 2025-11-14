@@ -1,0 +1,131 @@
+
+/* Welcome */
+.welcome h1 {
+  color: #0A2647;
+  margin-bottom: 5px;
+}
+
+.welcome p {
+  color: #205295;
+  margin-bottom: 20px;
+}
+
+/* ------------------- CIRCULAR PROGRESS ------------------- */
+.progress-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.progress-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.circle {
+  position: relative;
+  width: 350px;
+  height: 150px;
+}
+
+svg {
+  transform: rotate(-90deg);
+  width: 150px;
+  height: 150px;
+}
+
+.bg {
+  fill: none;
+  stroke: #EAF6F6;
+  stroke-width: 3.8;
+}
+
+.progress {
+  fill: none;
+  stroke: #00C2CB;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-weight: bold;
+  color: #205295;
+}
+
+/* ------------------- SUBJECTS ------------------- */
+.subjects {
+  margin-top: 30px;
+}
+
+.subjects h2 {
+  color: #0A2647;
+  margin-bottom: 15px;
+}
+
+.subject-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #205295, #00C2CB);
+  color: white;
+  height: 150px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card button {
+  background: white;
+  color: #00C2CB;
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.card button:hover {
+  background: #00C2CB;
+  color: white;
+}
+
+/* ------------------- QUICK LINKS ------------------- */
+.quick-links {
+  margin-top: 40px;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.link-box {
+  background-color: #EAF6F6;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #0A2647;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.link-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
