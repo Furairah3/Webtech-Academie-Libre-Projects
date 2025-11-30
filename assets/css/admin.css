@@ -1,0 +1,244 @@
+/* ============================================================
+   1. GRID LAYOUT
+   ============================================================ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+/* ============================================================
+   2. CARDS
+   ============================================================ */
+.grid .card {
+    background: #1e293b;
+    padding: 30px 25px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #e2e8f0;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.grid .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #06b6d4, #f59e0b);
+}
+
+.grid .card:hover {
+    transform: translateY(-8px);
+    border-color: #06b6d4;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.grid .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: white;
+    font-weight: 600;
+}
+
+.grid .card p {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ============================================================
+   3. TITLES
+   ============================================================ */
+.admin-title {
+    color: #f59e0b;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.admin-subtitle {
+    color: #cbd5e1;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* ============================================================
+   4. ADMIN HEADER - PREMIUM 2025
+   ============================================================ */
+.admin-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    backdrop-filter: blur(20px);
+    border-bottom: 5px solid #f59e0b;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-header .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header .logo {
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #06b6d4, #8b5cf6, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1.5px;
+    text-shadow: 0 0 30px rgba(245,158,11,0.5);
+}
+
+/* NAVIGATION */
+.admin-header nav {
+    display: flex;
+    align-items: center;
+    gap: - 5px;
+    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+.admin-header nav a {
+    color: #e2e8f0 !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.7rem;
+    padding: 5px 5px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-header nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.7s;
+}
+
+.admin-header nav a:hover {
+    background: #f59e0b !important;
+    color: black !important;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(245,158,11,0.5);
+}
+
+.admin-header nav a:hover::before {
+    left: 100%;
+}
+
+.admin-header nav a.active {
+    background: #f59e0b;
+    color: black;
+    font-weight: bold;
+}
+
+/* ============================================================
+   5. PROFILE BUTTON
+   ============================================================ */
+.admin-header .profile-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    padding: 12px 24px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    border: 3px solid #f59e0b;
+    transition: 0.4s;
+}
+
+.admin-header .profile-link:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(139,92,246,0.6);
+}
+
+.admin-header .profile-link img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f59e0b;
+    box-shadow: 0 0 25px rgba(245,158,11,0.8);
+}
+
+/* ============================================================
+   6. LOGOUT BUTTON
+   ============================================================ */
+.admin-header .btn-danger {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(239,68,68,0.5);
+    transition: all 0.4s;
+}
+
+.admin-header .btn-danger:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(239,68,68,0.7);
+}
+
+/* ============================================================
+   7. RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 992px) {
+    .admin-header .container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .admin-header nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .admin-header nav a {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid .card {
+        padding: 25px 20px;
+    }
+
+    .admin-title {
+        font-size: 2rem;
+    }
+}
