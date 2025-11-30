@@ -1,0 +1,91 @@
+/* Small extra stylesheet for header-related UI (buttons, modal, subject-progress) */
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.profile-actions a,
+.profile-actions button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* keep existing color scheme from main stylesheet; these only set layout/weights */
+.profile-actions .btn {
+    background: #ffffff;
+    color: #00C2CB;
+    border: none;
+}
+.profile-actions .btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+/* modal (simple, non-invasive) */
+.header-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,38,71,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+.header-modal {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    width: 420px;
+    max-width: calc(100% - 40px);
+    box-shadow: 0 8px 30px rgba(4, 35, 63, 0.25);
+}
+.header-modal h2 {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+.header-modal .form-row {
+    margin-bottom: 10px;
+}
+.header-modal label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #0A2647;
+}
+.header-modal input[type="text"],
+.header-modal input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+.header-modal .preview {
+    display: block;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #06b6d4;
+    margin-bottom: 8px;
+}
+
+/* ensure subject-progress takes same available width as other boxes when using .box wrapper */
+.box,
+.subject-progress {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* small responsive fix for top navbar profile area */
+@media (max-width: 720px) {
+    .profile-actions { flex-direction: column; }
+}
