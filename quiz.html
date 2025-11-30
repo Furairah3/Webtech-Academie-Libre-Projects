@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - X-Space Dashboard</title>
+  <link rel="stylesheet" href="css/generalStyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+
+  <!-- Top Navbar (Fixed) -->
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="images/LOGO_H.png" alt="X-Space Logo">
+    </div>
+    <input type="text" placeholder="Search resources...">
+    <div class="profile">
+      <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Profile">
+      <span>Chichibest</span>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul class="nav-links">
+      <li ><a href="dashboard.html" data-section="dashboard"><span>🏠 Dashboard</span></a></li>
+      <li><a href="resources.html" data-section="subjects"><span>📚 resources</span></a></li>
+      <li class="active"><a href="quiz.html" data-section="subjects"><span>🧠 Quiz</span></a></li>
+      <li><a href="Homework.html" data-section="notes"><span>📝 Homework</span></a></li>
+      <li><a href="Progress.html" data-section="videos"><span>📊 Progress</span></a></li>
+      <li><a href="profile.html" data-section="profile"><span>📚 Profile</span></a></li>
+      <li><a href="#" data-section="logout"><span>🚪 Logout</span></a></li>
+      <li><a href="#" data-section="settings" ><span>⚙ Settings</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="quiz-container">
+      <!-- Quiz Introduction -->
+      <div class="quiz-intro" id="quiz-intro">
+        <h1>Weekly Quizzes</h1>
+        <p>Select a subject and take quizzes for completed weeks.</p>
+        
+        <select class="subject-select" id="subject-select">
+          <option value="" disabled selected>Select a subject</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="physics">Physics</option>
+          <option value="english">English</option>
+          <option value="economics">Economics</option>
+          <option value="biology">Biology</option>
+        </select>
+        
+        <div class="week-selection" id="week-selection">
+          <!-- Week cards will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Quiz Questions Area -->
+      <div class="quiz-area" id="quiz-area">
+        <div class="week-info">
+          <h3 id="current-week-info">Week 1: Introduction to Algebra</h3>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+        
+        <div class="question-header">
+          <span id="question-number">Question 1 of 5</span>
+          <span id="subject-name">Mathematics</span>
+        </div>
+        
+        <div class="question-text" id="question-text">
+          What is 5 × 7?
+        </div>
+        
+        <div class="options-container" id="options-container">
+          <!-- Options will be populated by JavaScript -->
+        </div>
+        
+        <div class="quiz-navigation">
+          <button class="btn-prev" id="prev-question">Previous</button>
+          <button class="btn-next" id="next-question">Next</button>
+        </div>
+      </div>
+
+      <!-- Results Area -->
+      <div class="results-area" id="results-area">
+        <h2>Quiz Completed!</h2>
+        <div class="score" id="score">4/5</div>
+        <div class="feedback" id="feedback">Excellent work!</div>
+        
+        <div class="results-buttons">
+          <button class="btn-retake" id="retake-quiz">Retake Quiz</button>
+          <button class="btn-resources" id="go-resources">Back to Resources</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Fixed Footer -->
+  <footer class="footer">
+    © 2025 Academie Libre Learning Platform — Made with ❤ by Ashesi Students
+  </footer>
+
+  <script src="JS/quiz.js"></script>
+</body>
+</html>

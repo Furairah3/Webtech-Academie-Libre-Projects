@@ -1,0 +1,332 @@
+
+:root {
+--primary: #003366;
+--accent: #FFD700;
+--bg: #F5F6FA;
+--text: #333333;
+--hover: #0059b3;
+--card-bg: #ffffff;
+--correct: #28a745;
+--incorrect: #dc3545;
+--locked: #ccc;
+}
+
+/* Quiz specific styles */
+.quiz-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+
+.quiz-intro {
+background: var(--card-bg);
+border-radius: 12px;
+padding: 30px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+text-align: center;
+margin-bottom: 30px;
+}
+
+.quiz-intro h1 {
+color: #004aad;
+margin-bottom: 10px;
+font-size: 28px;
+}
+
+.quiz-intro p {
+color: #666;
+margin-bottom: 20px;
+font-size: 16px;
+}
+
+.subject-select {
+width: 100%;
+padding: 12px;
+border-radius: 8px;
+border: 1px solid #ddd;
+margin-bottom: 20px;
+font-size: 16px;
+font-family: 'Poppins', sans-serif;
+}
+
+.btn-start {
+background: #004aad;
+color: white;
+padding: 12px 30px;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+border: none;
+cursor: pointer;
+font-size: 16px;
+transition: background 0.3s;
+}
+
+.btn-start:hover {
+background: #003366;
+}
+
+.btn-start:disabled {
+background: var(--locked);
+cursor: not-allowed;
+}
+
+/* Week Selection */
+.week-selection {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 15px;
+margin-top: 20px;
+}
+
+.week-card {
+background: var(--card-bg);
+border-radius: 10px;
+padding: 20px;
+text-align: center;
+cursor: pointer;
+transition: all 0.3s;
+border: 2px solid transparent;
+}
+
+.week-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.week-card.available {
+border-color: var(--accent);
+}
+
+.week-card.available:hover {
+border-color: var(--primary);
+}
+
+.week-card.locked {
+background: #f8f9fa;
+color: #6c757d;
+cursor: not-allowed;
+}
+
+.week-card.completed {
+border-color: var(--correct);
+background: #f8fff9;
+}
+
+.week-number {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+
+.week-title {
+font-size: 14px;
+color: #666;
+margin-bottom: 10px;
+}
+
+.week-status {
+font-size: 12px;
+padding: 4px 8px;
+border-radius: 12px;
+display: inline-block;
+}
+
+.status-available {
+background: var(--accent);
+color: #000;
+}
+
+.status-locked {
+background: var(--locked);
+color: #666;
+}
+
+.status-completed {
+background: var(--correct);
+color: white;
+}
+
+/* Quiz Area */
+.quiz-area {
+background: var(--card-bg);
+border-radius: 12px;
+padding: 30px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+margin-bottom: 30px;
+display: none;
+}
+
+.question-header {
+display: flex;
+justify-content: space-between;
+margin-bottom: 20px;
+color: #666;
+}
+
+.question-text {
+font-size: 20px;
+margin-bottom: 25px;
+color: var(--primary);
+}
+
+.options-container {
+display: flex;
+flex-direction: column;
+gap: 12px;
+margin-bottom: 30px;
+}
+
+.option {
+padding: 15px;
+border: 1px solid #ddd;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.option:hover {
+background: #eaf1fb;
+}
+
+.option.selected {
+border-color: #004aad;
+background: #eaf1fb;
+font-weight: bold;
+}
+
+.option.correct {
+border-color: var(--correct);
+background: #d4edda;
+}
+
+.option.incorrect {
+border-color: var(--incorrect);
+background: #f8d7da;
+}
+
+.quiz-navigation {
+display: flex;
+justify-content: space-between;
+}
+
+.btn-next, .btn-prev {
+background: var(--accent);
+color: #111;
+padding: 10px 20px;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+border: none;
+cursor: pointer;
+}
+
+.btn-next:hover, .btn-prev:hover {
+background: #e6b800;
+}
+
+.btn-prev {
+background: #6c757d;
+color: white;
+}
+
+.btn-prev:hover {
+background: #5a6268;
+}
+
+.results-area {
+background: var(--card-bg);
+border-radius: 12px;
+padding: 40px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+text-align: center;
+display: none;
+}
+
+.results-area h2 {
+color: #004aad;
+margin-bottom: 10px;
+font-size: 28px;
+}
+
+.score {
+font-size: 48px;
+font-weight: bold;
+color: #004aad;
+margin: 20px 0;
+}
+
+.feedback {
+color: #555;
+font-size: 18px;
+margin-bottom: 30px;
+}
+
+.results-buttons {
+display: flex;
+justify-content: center;
+gap: 15px;
+}
+
+.btn-retake, .btn-resources {
+padding: 12px 25px;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+border: none;
+cursor: pointer;
+font-size: 16px;
+transition: background 0.3s;
+}
+
+.btn-retake {
+background: #004aad;
+color: white;
+}
+
+.btn-retake:hover {
+background: #003366;
+}
+
+.btn-resources {
+background: var(--accent);
+color: #111;
+}
+
+.btn-resources:hover {
+background: #e6b800;
+}
+
+.hidden {
+display: none;
+}
+
+/* Progress indicator */
+.progress-bar {
+height: 6px;
+background: #e9ecef;
+border-radius: 3px;
+margin-bottom: 20px;
+overflow: hidden;
+}
+
+.progress {
+height: 100%;
+background: #004aad;
+width: 0%;
+transition: width 0.3s;
+}
+
+/* Week info in quiz */
+.week-info {
+text-align: center;
+margin-bottom: 20px;
+padding: 15px;
+background: #f8f9fa;
+border-radius: 8px;
+}
+
+.week-info h3 {
+margin: 0;
+color: var(--primary);
+}

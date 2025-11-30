@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Académie Libre - Your Remote Learning Partner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #4a6cf7;
+      --primary-blue-dark: #3a5ce5;
+      --secondary-teal: #2dd4bf;
+      --accent-purple: #8b5cf6;
+      --accent-orange: #f97316;
+      --accent-pink: #ec4899;
+      --light-blue: #e0f2fe;
+      --light-teal: #ccfbf1;
+      --light-purple: #f3e8ff;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --white: #ffffff;
+      --light-bg: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 15px rgba(74, 108, 247, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-menu li {
+      margin-left: 25px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-blue);
+      transition: width 0.3s;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      border: none;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(74, 108, 247, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: var(--white);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 Q500,80 1000,0 L1000,100 L0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    /* About Section */
+    .about {
+      padding: 100px 0;
+      background: linear-gradient(to bottom, var(--light-blue), var(--white));
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-teal));
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.1rem;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text {
+      padding-right: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s;
+    }
+
+    .about-image:hover {
+      transform: translateY(-10px);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Platform Overview */
+    .platform-overview {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+
+    .storyboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .story-panel {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border-top: 4px solid var(--primary-blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-teal));
+    }
+
+    .story-panel:nth-child(2) {
+      border-top-color: var(--secondary-teal);
+    }
+
+    .story-panel:nth-child(3) {
+      border-top-color: var(--accent-orange);
+    }
+
+    .story-panel:nth-child(4) {
+      border-top-color: var(--accent-pink);
+    }
+
+    .story-panel:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .story-panel h3 {
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .story-panel:nth-child(2) h3 {
+      color: var(--secondary-teal);
+    }
+
+    .story-panel:nth-child(3) h3 {
+      color: var(--accent-orange);
+    }
+
+    .story-panel:nth-child(4) h3 {
+      color: var(--accent-pink);
+    }
+
+    .story-panel p {
+      color: var(--text-light);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 100px 0;
+      background: linear-gradient(to bottom, var(--light-teal), var(--white));
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-teal));
+    }
+
+    .service-card:nth-child(2)::before {
+      background: linear-gradient(to right, var(--secondary-teal), var(--accent-orange));
+    }
+
+    .service-card:nth-child(3)::before {
+      background: linear-gradient(to right, var(--accent-orange), var(--accent-pink));
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    /* Blog Section */
+    .blog {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .blog-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-content {
+      padding: 25px;
+    }
+
+    .blog-card h3 {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      font-size: 1.2rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .blog-card p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 100px 0;
+      background: linear-gradient(to bottom, var(--light-purple), var(--white));
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .team-member {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .member-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .member-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .team-member:hover .member-image img {
+      transform: scale(1.05);
+    }
+
+    .member-info {
+      padding: 25px 20px;
+    }
+
+    .member-info h3 {
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+
+    .member-info .role {
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .member-info p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: var(--text-light);
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+      color: var(--primary-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      color: var(--white);
+      padding: 70px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-about p {
+      margin-bottom: 25px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 20px;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-blue);
+      bottom: 0;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 5px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      color: var(--white);
+      font-size: 1.3rem;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: var(--primary-blue);
+      transform: translateY(-3px);
+    }
+
+    .newsletter h4 {
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .newsletter h4::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-blue);
+      bottom: 0;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+
+    .newsletter-form input::placeholder {
+      color: #94a3b8;
+    }
+
+    .newsletter-form button {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: var(--white);
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background: linear-gradient(135deg, var(--primary-blue-dark), var(--accent-purple));
+    }
+
+    .newsletter p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #475569;
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--white);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-content,
+      .storyboard,
+      .services-grid,
+      .blog-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        padding: 80px 0;
+      }
+      
+      .about, .platform-overview, .services, .blog, .team {
+        padding: 70px 0;
+      }
+      
+      .auth-buttons {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html">
+        <img src="images/LOGO_H.png" alt="Académie Libre Logo" class="logo">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#about">About Project</a></li>
+        <li><a href="#platform">Platform Overview</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#team">Our Team</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <a href="sinin.html" class="btn btn-outline">Login</a>
+        <a href="sinin.html#register-form" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Empower Your Learning Experience</h1>
+      <p>Welcome to Academie libre, your premier destination for remote learning. Our platform is designed to empower you with the tools and resources you need to excel in your educational journey. Get ready to unlock your full potential and achieve academic success.</p>
+      <a href="sinin.html" class="btn btn-primary">Get Started Learning</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Our Project</h2>
+        <p>Making exam preparation fairer and easier for every candidat libre</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Many students in Niger prepare for national exams (BEPC and Bac) as candidats libres. Without regular classes or teachers, they often struggle to find reliable study materials and feedback.</p>
+          <p>Académie Libre gives them a simple online space where they can access past exam papers with solutions, take practice quizzes with instant grading, upload essays for automated feedback, and track their progress — all from a phone or small data plan.</p>
+          <p>Our mission: make exam preparation fairer and easier for every candidat libre.</p>
+          <a href="#" class="btn btn-primary" style="margin-top: 20px;">Read More</a>
+        </div>
+        <div class="about-image">
+          <img src="images/aca.png" alt="Platform Overview">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Overview -->
+  <section id="platform" class="platform-overview">
+    <div class="container">
+      <div class="section-title">
+        <h2>Platform Overview</h2>
+        <p>Discover how our platform works to support your learning journey</p>
+      </div>
+      <div class="storyboard">
+        <div class="story-panel">
+          <h3>Panel 1: Login / Access Platform</h3>
+          <p>Welcome to Académie Libre! Students begin by logging into their personal account using a secure email and password. Once verified, they're instantly directed to their personalized dashboard — their learning hub for all upcoming tasks, quizzes, and study materials.</p>
+        </div>
+        <div class="story-panel">
+          <h3>Panel 2: Explore Resources</h3>
+          <p>After logging in, students can easily explore a wide range of organized resources — from past exam papers to correction guides. Subjects are neatly categorized (Maths, French, History, and more), and a smart search feature helps them find exactly what they need by year, subject, or exam type.</p>
+        </div>
+        <div class="story-panel">
+          <h3>Panel 3: Take a Quiz</h3>
+          <p>Learning gets interactive with timed quizzes designed for quick self-assessment. Students select a subject, answer questions under time pressure, and receive instant scores with explanations. Each quiz helps track progress and highlights areas for improvement.</p>
+        </div>
+        <div class="story-panel">
+          <h3>Panel 4: AI Homework Feedback</h3>
+          <p>With our AI-powered feedback tool, students can upload essays or written answers and receive immediate, constructive feedback. The system scores their work, provides tips on structure, grammar, and clarity, and allows re-submissions for better results. Learning becomes a continuous, guided experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Comprehensive Services</h2>
+        <p>Everything you need to succeed in your exams</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Exam Prep Course</h3>
+          <p>Comprehensive preparation materials for BEPC and Bac exams with practice tests and solutions.</p>
+          <a href="#" class="btn btn-primary">View Course</a>
+        </div>
+        <div class="service-card">
+          <h3>Homework Help Session</h3>
+          <p>Get personalized assistance with your homework and assignments from qualified tutors.</p>
+          <a href="#" class="btn btn-primary">Book Now</a>
+        </div>
+        <div class="service-card">
+          <h3>Personalized Tutoring</h3>
+          <p>One-on-one tutoring sessions tailored to your specific learning needs and goals.</p>
+          <a href="#" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="section-title">
+        <h2>Dive into Our Blog</h2>
+        <p>Insights and tips to help you succeed in your exams</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-content">
+            <h3>Suivi des progrès: Clé du succès aux examens</h3>
+            <div class="blog-meta">
+              <span>Foureiratou Zakari yaou idi</span>
+              <span>0 views</span>
+            </div>
+            <p>Les examens peuvent être une source de stress pour de nombreux étudiants. La pression de réussir peut parfois sembler écrasante....</p>
+            <a href="#" class="btn btn-outline">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-content">
+            <h3>Préparez-vous pour le Bac avec nos ressources interactives</h3>
+            <div class="blog-meta">
+              <span>Foureiratou Zakari yaou idi</span>
+              <span>0 views</span>
+            </div>
+            <p>Le Bac est une étape cruciale dans la vie de chaque étudiant en France. C'est un moment de stress, d'excitation et de préparation...</p>
+            <a href="#" class="btn btn-outline">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-content">
+            <h3>Réussir le BEPC: Stratégies d'apprentissage efficaces</h3>
+            <div class="blog-meta">
+              <span>Foureiratou Zakari yaou idi</span>
+              <span>0 views</span>
+            </div>
+            <p>Le Brevet d'Études du Premier Cycle (BEPC) est une étape cruciale dans le parcours scolaire des élèves. Pour beaucoup, il représente un...</p>
+            <a href="#" class="btn btn-outline">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>Learn more about the visionaries behind Académie Libre</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/furairah.png" alt="Foureiratou ZAKARI YAOU IDI">
+          </div>
+          <div class="member-info">
+            <h3>Foureiratou ZAKARI YAOU IDI</h3>
+            <div class="role">Project Lead & Web Developer</div>
+            <p>A Computer Science major passionate about using technology to solve real-world problems in education. Loves coding, teamwork, and building platforms that make a difference for students.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/Chidima Praise Jude Ugwu 12.jpg" alt="Chidima Praise">
+          </div>
+          <div class="member-info">
+            <h3>Chidima Praise</h3>
+            <div class="role">Backend Developer & Research Lead</div>
+            <p>A Computer Science major passionate about using technology to solve real-world problems in education. Skilled in backend development and database management, with a focus on integrating learning resources into functional digital platforms.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/Alan.png" alt="Alan Nelson">
+          </div>
+          <div class="member-info">
+            <h3>Alan Nelson</h3>
+            <div class="role">Backend Developer & Systems Designer</div>
+            <p>Alan brings analytical precision and problem-solving expertise to the core of every project. With a focus on database design, automation, and system logic, he ensures smooth, reliable performance behind the scenes.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <img src="images/LOGO_H.png" alt="Académie Libre Logo" class="footer-logo">
+          <p>Académie Libre gives students a simple online space where they can access past exam papers with solutions, take practice quizzes with instant grading, upload essays for automated feedback, and track their progress.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Project</a></li>
+            <li><a href="#platform">Platform Overview</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> 123-456-7890</li>
+            <li><i class="fas fa-envelope"></i> info@academielibre.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> Ashesi University/ Ghana</li>
+          </ul>
+        </div>
+        <div class="newsletter">
+          <h4>Connect with Us</h4>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Email*" required>
+            <button type="submit">Subscribe</button>
+          </form>
+          <p>Yes, subscribe me to your newsletter.*</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2023 by Academie libre. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility Statement</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
