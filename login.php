@@ -31,6 +31,7 @@ if(is_logged_in()) {
 
     <p class="text-center" style="margin-top:30px;">
         No account? <a href="register.php" style="color:#06b6d4; font-weight:bold;">Register here</a>
+        Want to go back home? <a href="index.php" style="color:#06b6d4; font-weight:bold;">Register here</a>
     </p>
 </div>
 
