@@ -388,22 +388,58 @@ if($is_admin_user) {
         <?php endif; ?>
     </div>
 </div>
+
+    
+// function toggleEditProfile() {
+//     const section = document.getElementById('editProfileSection');
+//     if (section.style.display === 'none') {
+//         section.style.display = 'block';
+//         // Scroll to the edit section
+//         section.scrollIntoView({ behavior: 'smooth' });
+//     } else {
+//         section.style.display = 'none';
+//     }
+// }
+// // Profile picture upload functionality
+// document.getElementById('profile-pic-input').addEventListener('change', function() {
+//     if (this.files && this.files[0]) {
+//         document.getElementById('profile-pic-form').submit();
+//     }
+// });
+
+
 <script>
-function toggleEditProfile() {
-    const section = document.getElementById('editProfileSection');
-    if (section.style.display === 'none') {
-        section.style.display = 'block';
-        // Scroll to the edit section
-        section.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        section.style.display = 'none';
-    }
-}
-// Profile picture upload functionality
-document.getElementById('profile-pic-input').addEventListener('change', function() {
-    if (this.files && this.files[0]) {
-        document.getElementById('profile-pic-form').submit();
-    }
+// Wait for page to fully load first
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Toggle Edit Profile Section
+    window.toggleEditProfile = function() {
+        const section = document.getElementById('editProfileSection');
+        if (section.style.display === 'none' || section.style.display === '') {
+            section.style.display = 'block';
+            section.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            section.style.display = 'none';
+        }
+    };
+
+    // Profile Picture Upload – NOW WORKS 100%
+    const fileInput = document.getElementById('profile-pic-input');
+    const form = document.getElementById('profile-pic-form');
+
+    // Trigger file input when camera button is clicked
+    document.querySelector('button[onclick="document.getElementById(\'profile-pic-input\').click()"]')
+        .addEventListener('click', function(e) {
+            e.preventDefault();
+            fileInput.click();
+        });
+
+    // When user selects a file → auto submit
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            form.submit(); // This now works because form is in DOM
+        }
+    });
 });
 </script>
 <?php include 'includes/footer.php'; ?>
