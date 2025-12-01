@@ -169,10 +169,13 @@ Page rendering and routing checks
 
 ## PROJECT CONTRIBUTORS
 Name	Role	Contributions
-Foureiratou Zakariyaou	Content Lead & Documentation	Course creation, weekly modules, quizzes, assignments, PDF uploads, ER diagram, database support, documentation
-Chidima Ugwu	, Frontend & Backend Developer	. Built major PHP pages, UI styling, routing, sessions, progress tracking system, deployment, and debugging
-Alan	Database Engineer,	MySQL schema development, user flow design
-ADDITIONAL NOTES
+###### Foureiratou Zakariyaou	
+Content Lead & Documentation	Course creation, weekly modules, quizzes, assignments, PDF uploads, ER diagram, database support, documentation
+###### Chidima Ugwu,
+Frontend & Backend Developer. Built major PHP pages, UI styling, routing, sessions, progress tracking system, deployment, and debugging
+###### Alan	
+Database Engineer,	MySQL schema development, user flow design
+###ADDITIONAL NOTES
 
 Do NOT upload config.php to GitHub (contains credentials).
 
