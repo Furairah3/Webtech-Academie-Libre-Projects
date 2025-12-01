@@ -1,12 +1,11 @@
-<?php require_once 'auth.php'; ?>
 <?php 
+require_once 'auth.php'; 
+require_once '../config/base.php';
 require_once '../config/db.php';
 
-// Get all modules with course name
 $modules = $pdo->query("
     SELECT m.id, m.title as module_title, c.title as course_title
-    FROM modules m 
-    JOIN courses c ON m.course_id = c.id 
+    FROM modules m JOIN courses c ON m.course_id = c.id 
     ORDER BY c.title, m.module_order
 ")->fetchAll();
 
