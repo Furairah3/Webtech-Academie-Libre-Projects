@@ -167,7 +167,7 @@ if($is_admin_user) {
         <div style="display:flex;align-items:center;gap:20px;margin-bottom:30px;">
             <!-- Profile Picture with Upload Functionality -->
             <div style="position:relative;">
-                <img src="assets/uploads/<?php echo $user['profile_pic'] ?? 'default.jpg'; ?>?v=<?php echo time(); ?>"
+                <img src="<?= ASSETS_URL ?>/uploads/<?= $user['profile_pic'] ?? 'default.jpg'; ?>?v=<?= time(); ?>"
                      alt="Profile"
                      style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid #06b6d4;">
                 <!-- Change Picture Button -->
