@@ -1,9 +1,5 @@
 <?php
 require_once 'config/base.php';
-
-"<?= BASE_URL ?>/
-
-require_once 'config/base.php';
 require_once 'includes/functions.php';
 if(!is_logged_in()) redirect('login.php');
 require_once 'config/db.php';
