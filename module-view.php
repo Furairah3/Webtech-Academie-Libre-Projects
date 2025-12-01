@@ -138,7 +138,7 @@ $sub = $submission->fetch();
     <p style="color:#94a3b8;margin:15px 0;">Posted by <strong>@<?= htmlspecialchars($assign['admin_name']) ?></strong></p>
     
     <?php if($assign['description']): ?>
-        <div style="background:#dce5fa;padding:25px;border-radius:16px;margin:20px 0;line-height:1.8;color:#e2e8f0;">
+        <div style="background:#dce5fa;padding:25px;border-radius:16px;margin:20px 0;line-height:1.8;color:#000205;">
             <?= nl2br(htmlspecialchars($assign['description'])) ?>
         </div>
     <?php endif; ?>
