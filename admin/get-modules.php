@@ -1,4 +1,5 @@
 <?php
+require_once '../config/base.php';
 require_once '../config/db.php';
 $course_id = (int)$_GET['course_id'];
 
