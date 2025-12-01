@@ -1,4 +1,5 @@
 <?php
+require_once 'config/base.php';
 require_once 'includes/functions.php';
 if(!is_logged_in()) redirect('login.php');
 require_once 'config/db.php';
@@ -60,7 +61,7 @@ include 'includes/header.php'; // or your main header
                         <p style="color:#ef4444;font-weight:bold;">Not submitted yet</p>
                     <?php endif; ?>
 
-                    <a href="module-view.php?id=<?= $a['module_id'] ?>" 
+                    <a href="<?= BASE_URL ?>/module-view.php?id=<?= $a['module_id'] ?>" 
                        class="btn" style="background:#8b5cf6;padding:14px 30px;margin-top:10px;display:inline-block;">
                         Go to Assignment
                     </a>
