@@ -169,7 +169,7 @@ Page rendering and routing checks
 
 ## PROJECT CONTRIBUTORS
 Name	Role	Contributions
-#### Foureiratou Zakariyaou	
+#### Foureiratou ZAKARI YAOU IDI	
 Content Lead & Documentation	Course creation, weekly modules, quizzes, assignments, PDF uploads, ER diagram, database support, documentation
 #### Chidima Ugwu,
 Frontend & Backend Developer. Built major PHP pages, UI styling, routing, sessions, progress tracking system, deployment, and debugging
@@ -180,8 +180,6 @@ Database Engineer,	MySQL schema development, user flow design
 Do NOT upload config.php to GitHub (contains credentials).
 
 If the live server is down, you can contact Chidima, the VM handler.
-An 
-AI assistant requires an active API key.
 
 Deployment debugging took over 24 hours due to issues with linking and broken pages.
 
