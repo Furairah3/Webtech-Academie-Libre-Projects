@@ -1,3 +1,4 @@
+<?php require_once '../config/base.php'; ?>
 <?php require_once 'auth.php'; ?>
 <?php 
 require_once '../config/db.php';
