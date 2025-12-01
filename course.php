@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/functions.php';
-if(!is_logged_in()) redirect('index.php');
+if(!is_logged_in()) redirect('login.php');
 include 'includes/header.php';
 require_once 'config/db.php';
 ?>
