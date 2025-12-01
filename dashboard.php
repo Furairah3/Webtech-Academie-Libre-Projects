@@ -1,4 +1,5 @@
 <?php 
+require_once 'config/base.php';
 require_once 'includes/functions.php';
 if(!is_logged_in() || is_admin()) redirect('login.php');
 require_once 'config/db.php';
@@ -88,7 +89,7 @@ include 'includes/header.php';
             
             <!-- Main Action Button -->
             <div style="text-align:center;margin-top:20px;">
-                <a href="course.php" style="background:#06b6d4;color:white;text-decoration:none;padding:15px 40px;border-radius:8px;font-weight:bold;font-size:1.1rem;display:inline-block;">
+                <a href="<?= BASE_URL ?>/course.php" style="background:#06b6d4;color:white;text-decoration:none;padding:15px 40px;border-radius:8px;font-weight:bold;font-size:1.1rem;display:inline-block;">
                     Browse All Courses
                 </a>
             </div>
@@ -156,19 +157,19 @@ include 'includes/header.php';
         <div style="background:white;border-radius:15px;padding:30px;box-shadow:0 4px 6px rgba(0,0,0,0.1);margin-bottom:30px;">
             <h2 style="color:#1e293b;margin-bottom:25px;font-size:1.5rem;">Quick Actions</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;">
-                <a href="course.php" style="background:#1e40af;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
+                <a href="<?= BASE_URL ?>/course.php" style="background:#1e40af;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
                     <span style="font-size:1.5rem;">📚</span>
                     View Courses
                 </a>
-                <a href="take-quiz.php" style="background:#7c3aed;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
+                <a href="<?= BASE_URL ?>/take-quiz.php" style="background:#7c3aed;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
                     <span style="font-size:1.5rem;">🧠</span>
                     Take Quiz
                 </a>
-                <a href="upload-assignment.php" style="background:#06b6d4;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
+                <a href="<?= BASE_URL ?>/upload-assignment.php" style="background:#06b6d4;color:white;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
                     <span style="font-size:1.5rem;">📝</span>
                     Submit Assignment
                 </a>
-                <a href="profile.php" style="background:#f59e0b;color:black;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
+                <a href="<?= BASE_URL ?>/profile.php" style="background:#f59e0b;color:black;text-decoration:none;padding:20px;border-radius:8px;text-align:center;font-weight:bold;display:flex;flex-direction:column;align-items:center;gap:10px;">
                     <span style="font-size:1.5rem;">👤</span>
                     View Profile
                 </a>
