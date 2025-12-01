@@ -28,8 +28,9 @@ require_once 'config/db.php';
         ?>
             <div class="course-card">
                 <div class="course-image <?php echo $course['thumbnail'] ? '' : 'no-image'; ?>"
-                     style="<?php echo $course['thumbnail'] ? 'background-image:url(<?= ASSETS_URL ?>/uploads/'.$course['thumbnail'].');' : ''; ?>">
+                     style="<?php echo $course['thumbnail'] ? 'background-image:url(assets/uploads/'.$course['thumbnail'].');' : ''; ?>">
                 </div>
+                
                 <div class="course-content">
                     <h3 class="course-title"><?php echo htmlspecialchars($course['title']); ?></h3>
                     <p class="course-description">
