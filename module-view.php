@@ -147,7 +147,7 @@ $sub = $submission->fetch();
     <?php if($assign['file_path']): ?>
         <div style="margin:25px 0;">
             <a href="<?= $assign['file_path'] ?>" target="_blank"
-               style="background:#06b6d4;color:white;padding:14px 32px;border-radius:12px;text-decoration:none;font-weight:bold;margin-right:15px;">
+               style="background:#d406b5;color:white;padding:14px 32px;border-radius:12px;text-decoration:none;font-weight:bold;margin-right:15px;">
                View Assignment File
             </a>
             <a href="<?= $assign['file_path'] ?>" download
