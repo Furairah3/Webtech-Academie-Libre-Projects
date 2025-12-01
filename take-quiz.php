@@ -116,26 +116,10 @@ if(empty($questions)) { include 'includes/header.php'; echo '<div class="card te
 // Shuffle questions
 shuffle($questions);
 
-// Shuffle options for each question and store original letters
+// Shuffle options for each question
 foreach ($questions as &$q) {
-    $options_array = explode(',', $q['options']);
-    $correct_array = explode(',', $q['correct_option']);
-    
-    // Create array with letters and text
-    $option_data = [];
-    $letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-    for ($i = 0; $i < count($options_array); $i++) {
-        $option_data[] = [
-            'letter' => $letters[$i],
-            'text' => trim($options_array[$i])
-        ];
-    }
-    
-    shuffle($option_data);
-    $q['options_display'] = $option_data;
-    
-    // Keep correct options as letters for scoring
-    $q['correct_options'] = array_map('trim', $correct_array);
+    $q['options'] = explode(',', $q['options']);
+    shuffle($q['options']);
 }
 unset($q);
 
@@ -153,7 +137,7 @@ if($_POST) {
             $user_ans = [$user_ans];
         }
 
-        $correct_options = $q['correct_options'];
+        $correct_options = array_map('trim', explode(',', $q['correct_option']));
         $correct_count   = count($correct_options);
         $user_correct    = 0;
 
@@ -194,7 +178,7 @@ if($_POST) {
     ]);
 
     // Save answers
-    // === SAVE USER ANSWERS SAFELY ===
+    // === SAVE USER ANSWERS SAFELY (NO MORE DUPLICATE ERROR) ===
     foreach($_POST as $key => $value) {
         if(strpos($key, 'q') === 0) {
             $qid = (int)substr($key, 1);
@@ -224,100 +208,16 @@ if($_POST) {
         exit();
     }
 
-    $_SESSION['quiz_result'] = [
-        'score' => $total_score,
-        'total' => $total_questions,
-        'percentage' => $percentage,
-        'passed' => $passed,
-        'quiz_title' => $quiz['title'],
-        'passing_score' => $quiz['passing_score']
-    ];
+    $_SESSION['quiz_result'] = ['score'=>$total_score,'total'=>$total_questions,'percentage'=>$percentage,'passed'=>$passed];
     header("Location: take-quiz.php?module_id=$module_id&result=1");
     exit();
 }
 
-// Show result - FIXED: Added proper result display
+// Show result
 if(isset($_GET['result'])) {
-    $r = $_SESSION['quiz_result'] ?? null; 
-    if(!$r) {
-        header("Location: take-quiz.php?module_id=$module_id");
-        exit();
-    }
+    $r = $_SESSION['quiz_result'] ?? null; unset($_SESSION['quiz_result']);
     include 'includes/header.php';
-    ?>
-    <style>
-    .result-card {
-        max-width: 600px;
-        margin: 60px auto;
-        padding: 40px;
-        background: #dce5fa;
-        color: white;
-        border-radius: 20px;
-        text-align: center;
-    }
-    .result-icon {
-        font-size: 5rem;
-        margin-bottom: 20px;
-    }
-    .score-display {
-        font-size: 3rem;
-        font-weight: bold;
-        margin: 20px 0;
-    }
-    .passed {
-        color: #10b981;
-    }
-    .failed {
-        color: #ef4444;
-    }
-    .btn-container {
-        margin-top: 30px;
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    </style>
-    
-    <div class="result-card">
-        <div class="result-icon">
-            <?= $r['passed'] ? '✅' : '❌' ?>
-        </div>
-        <h2 style="color:#8b5cf6;">Quiz: <?= htmlspecialchars($r['quiz_title']) ?></h2>
-        
-        <div class="score-display <?= $r['passed'] ? 'passed' : 'failed' ?>">
-            <?= $r['percentage'] ?>%
-        </div>
-        
-        <p style="font-size:1.2rem;color:#94a3b8;">
-            You scored <?= $r['score'] ?> out of <?= $r['total'] ?> questions
-            <br>
-            Passing score: <?= $r['passing_score'] ?>%
-        </p>
-        
-        <div style="background:#1e293b;padding:20px;border-radius:12px;margin:25px 0;">
-            <p style="font-size:1.3rem;margin:0;color:<?= $r['passed']?'#10b981':'#ef4444' ?>;">
-                <?= $r['passed'] ? '🎉 Congratulations! You passed!' : '📚 Keep studying! You can try again.' ?>
-            </p>
-        </div>
-        
-        <div class="btn-container">
-            <?php if($attempts_made < $MAX_ATTEMPTS - 1): ?>
-                <a href="take-quiz.php?module_id=<?= $module_id ?>" class="btn" style="background:#8b5cf6;padding:14px 30px;">
-                    Try Again (<?= $attempts_made + 1 ?>/<?= $MAX_ATTEMPTS ?>)
-                </a>
-            <?php endif; ?>
-            <a href="course.php" class="btn" style="background:#06b6d4;padding:14px 30px;">
-                Back to Courses
-            </a>
-            <a href="take-quiz.php?module_id=0" class="btn" style="background:#f59e0b;color:black;padding:14px 30px;">
-                My Results
-            </a>
-        </div>
-    </div>
-    <?php
-    unset($_SESSION['quiz_result']);
-    include 'includes/footer.php';
+    // Your beautiful result screen here
     exit();
 }
 
@@ -325,49 +225,24 @@ include 'includes/header.php';
 ?>
 
 <style>
-/* Improved CSS for option layout */
-.quiz-option-label {
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    padding: 16px !important;
-    background: #334155 !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    margin-bottom: 0 !important;
-    transition: background 0.2s;
+.quiz-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: #eef2ff;
+    padding: 12px 14px;
+    border-radius: 10px;
 }
 
-.quiz-option-label:hover {
-    background: #475569 !important;
+.quiz-option input {
+    margin-top: 4px;
 }
 
-.quiz-option-label input[type="radio"],
-.quiz-option-label input[type="checkbox"] {
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-    width: 20px !important;
-    height: 20px !important;
-}
-
-.quiz-option-label .option-text {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    flex: 1 !important;
-    line-height: 1.5 !important;
-    color: white;
-}
-
-.option-letter {
-    font-weight: bold;
-    color: #8b5cf6;
-    min-width: 25px;
-}
-
-/* Override any inline styles that might break layout */
-div[style*="display:grid;gap:14px;"] > * {
-    margin-bottom: 0 !important;
+.quiz-option label {
+    flex: 1;
+    line-height: 1.4;
+    cursor: pointer;
 }
 </style>
 
@@ -392,25 +267,28 @@ div[style*="display:grid;gap:14px;"] > * {
                     </p>
                 <?php endif; ?>
                 <div style="display:grid;gap:14px;">
-                    <?php foreach($q['options_display'] as $option): ?>
-                        <label class="quiz-option-label">
+                    <?php foreach($q['options'] as $opt): 
+                        $opt = trim($opt);
+                        if($opt):
+                    ?>
+                        <div class="quiz-option">
                             <input 
                                 type="<?= $q['question_type']==='multiple' ? 'checkbox' : 'radio' ?>"
                                 name="q<?= $q['id'] ?><?= $q['question_type']==='multiple'?'[]':'' ?>"
-                                value="<?= htmlspecialchars($option['letter']) ?>"
+                                value="<?= htmlspecialchars($opt) ?>"
+                                id="q<?= $q['id'] . '_' . md5($opt) ?>"
                                 <?= $q['question_type']==='radio'?'required':'' ?>
                             >
-                            <span class="option-text">
-                                <span class="option-letter"><?= $option['letter'] ?>)</span>
-                                <?= htmlspecialchars($option['text']) ?>
-                            </span>
-                        </label>
-                    <?php endforeach; ?>
+                            <label for="q<?= $q['id'] . '_' . md5($opt) ?>">
+                                <?= htmlspecialchars($opt) ?>
+                            </label>
+                        </div>
+                    <?php endif; endforeach; ?>
                 </div>
             </div>
         <?php endforeach; ?>
 
-        <button type="submit" style="width:100%;padding:22px;background:#8b5cf6;color:white;border:none;border-radius:16px;font-size:1.8rem;font-weight:bold;margin-top:40px;cursor:pointer;">
+        <button type="submit" style="width:100%;padding:22px;background:#8b5cf6;color:white;border:none;border-radius:16px;font-size:1.8rem;font-weight:bold;margin-top:40px;">
             Submit Quiz (Attempt <?= $attempts_made + 1 ?>)
         </button>
     </form>
