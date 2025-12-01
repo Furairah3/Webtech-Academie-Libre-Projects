@@ -1,6 +1,6 @@
 <?php 
 require_once 'includes/functions.php';
-if(!is_logged_in() || is_admin()) redirect('index.php');
+if(!is_logged_in() || is_admin()) redirect('login.php');
 require_once 'config/db.php';
 
 $user_id = $_SESSION['user_id'];
