@@ -1,4 +1,9 @@
 <?php
+require_once 'config/base.php';
+
+"<?= BASE_URL ?>/
+
+require_once 'config/base.php';
 require_once 'includes/functions.php';
 if(!is_logged_in()) redirect('login.php');
 require_once 'config/db.php';
@@ -37,8 +42,8 @@ $modules = $modules_stmt->fetchAll();
 include 'includes/header.php';
 ?>
 
-<link rel="stylesheet" href="assets/css/course-view.css?v=<?php echo time(); ?>">
-
+<link rel="stylesheet" href="<?= ASSETS_URL ?>/css/course-view.css?v=<?= time(); ?>">
+    
 <div class="course-view-container">
     <div class="course-view-header">
         <h1 class="course-view-title"><?php echo htmlspecialchars($course['title']); ?></h1>
@@ -50,7 +55,7 @@ include 'includes/header.php';
         <aside class="course-view-sidebar">
             <div class="card">
                 <h3>Quick Actions</h3>
-                <a href="course.php" style="display:block;margin:15px 0;color:#06b6d4;font-weight:600;">
+                <a href="<?= BASE_URL ?>/course.php" style="display:block;margin:15px 0;color:#06b6d4;font-weight:600;">
                     ← Back to All Courses
                 </a>
             </div>
@@ -102,7 +107,7 @@ include 'includes/header.php';
 
                                 <!-- QUIZ BUTTON – only if quiz exists AND module is unlocked -->
                                 <?php if($module['quiz_id'] && $unlocked): ?>
-                                    <a href="take-quiz.php?module_id=<?php echo $module['id']; ?>" 
+                                    <a href="<?= BASE_URL ?>/take-quiz.php?module_id=<?php echo $module['id']; ?>" 
                                        class="module-status status-quiz">
                                        Quiz Available
                                     </a>
@@ -110,13 +115,13 @@ include 'includes/header.php';
 
                                 <!-- ASSIGNMENT BUTTON – only if assignment exists AND module is unlocked -->
                                 <?php if($module['assignment_id'] && $unlocked): ?>
-                                    <a href="upload-assignment.php?module_id=<?php echo $module['id']; ?>" 
+                                    <a href="<?= BASE_URL ?>/upload-assignment.php?module_id=<?php echo $module['id']; ?>" 
                                        class="module-status status-assignment">
                                        Assignment Posted
                                     </a>
                                 <?php endif; ?>
 
-                                <a href="module-view.php?id=<?php echo $module['id']; ?>" 
+                                <a href="<?= BASE_URL ?>/module-view.php?id=<?php echo $module['id']; ?>" 
                                    class="module-btn <?php echo !$unlocked ? 'disabled' : ''; ?>">
                                     <?php echo $is_completed ? 'Review Module' : ($unlocked ? 'Start Module' : 'Locked'); ?>
                                 </a>
