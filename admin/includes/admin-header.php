@@ -14,7 +14,7 @@ if(is_logged_in()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin • LearnStep</title>
+    <title>Admin • Academie Libre</title>
     <link rel="stylesheet" href="/learnstep/assets/css/style.css">
     <link rel="stylesheet" href="/learnstep/assets/css/admin.css">
     <style>
@@ -28,7 +28,7 @@ if(is_logged_in()) {
 <body>
     <header class="admin-header">
         <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
-            <div class="logo">LearnStep <span style="color:#f59e0b;">ADMIN</span></div>
+            <div class="logo">Academie Libre <span style="color:#f59e0b;">ADMIN</span></div>
             <nav>
                 <a href="dashboard.php">Dashboard</a>
                 <a href="add_course.php">Courses</a>
