@@ -112,22 +112,49 @@ $questions = $questions->fetchAll();
 
 if(empty($questions)) { include 'includes/header.php'; echo '<div class="card text-center"><h2>No questions</h2></div>'; include 'includes/footer.php'; exit(); }
 
+// ✅ SHUFFLE QUESTIONS AND OPTIONS
+// Shuffle questions
+shuffle($questions);
+
+// Shuffle options for each question
+foreach ($questions as &$q) {
+    $q['options'] = explode(',', $q['options']);
+    shuffle($q['options']);
+}
+unset($q);
+
 // ===================================================================
 // SUBMIT QUIZ
 // ===================================================================
 if($_POST) {
     $total_score = 0.0;
+    
+    // ✅ UPDATED SCORING LOGIC
     foreach($questions as $q) {
         $user_ans = $_POST['q'.$q['id']] ?? [];
-        if(!is_array($user_ans)) $user_ans = [$user_ans];
-        $correct_options = array_map('trim', explode(',', $q['correct_option']));
-        $correct_count = count($correct_options);
-        $user_correct = 0;
-        foreach($user_ans as $ans) if(in_array(trim($ans), $correct_options)) $user_correct++;
 
-        $question_score = ($q['question_type'] === 'multiple' && $correct_count > 0)
-            ? $user_correct / $correct_count
-            : (($user_correct == $correct_count && count($user_ans) == $correct_count) ? 1 : 0);
+        if (!is_array($user_ans)) {
+            $user_ans = [$user_ans];
+        }
+
+        $correct_options = array_map('trim', explode(',', $q['correct_option']));
+        $correct_count   = count($correct_options);
+        $user_correct    = 0;
+
+        foreach ($user_ans as $ans) {
+            if (in_array(trim($ans), $correct_options)) {
+                $user_correct++;
+            }
+        }
+
+        // Multiple-select partial scoring
+        if ($q['question_type'] === 'multiple' && $correct_count > 0) {
+            $question_score = $user_correct / $correct_count;
+        } else {
+            // Single choice scoring
+            $question_score = ($user_correct == $correct_count && count($user_ans) == $correct_count) ? 1 : 0;
+        }
+
         $total_score += $question_score;
     }
 
@@ -135,12 +162,20 @@ if($_POST) {
     $percentage = round(($total_score / $total_questions) * 100, 1);
     $passed = $percentage >= $quiz['passing_score'];
 
-    // Save attempt (keep best)
-    $pdo->prepare("INSERT INTO quiz_attempts (user_id, quiz_id, score, total_questions, passed, attempted_at) VALUES (?,?,?,?,?,NOW())
-                   ON DUPLICATE KEY UPDATE score = IF(VALUES(score) > score, VALUES(score), score),
-                                           passed = IF(VALUES(score) > score, VALUES(passed), passed),
-                                           attempted_at = NOW()")
-        ->execute([$user_id, $quiz['id'], $total_score, $total_questions, $passed ? 1 : 0]);
+    // ✅ UPDATED SAVE ATTEMPTS
+    $stmt = $pdo->prepare("
+        INSERT INTO quiz_attempts 
+        (user_id, quiz_id, score, total_questions, percentage, passed, attempted_at) 
+        VALUES (?, ?, ?, ?, ?, ?, NOW())
+    ");
+    $stmt->execute([
+        $user_id,
+        $quiz['id'],
+        $total_score,
+        $total_questions,
+        $percentage,
+        $passed
+    ]);
 
     // Save answers
     // === SAVE USER ANSWERS SAFELY (NO MORE DUPLICATE ERROR) ===
@@ -189,6 +224,65 @@ if(isset($_GET['result'])) {
 include 'includes/header.php';
 ?>
 
+<style>
+/* FIXED CSS - Targeting your actual HTML structure */
+.quiz-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    background: #334155 !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    margin-bottom: 0 !important;
+}
+
+.quiz-option input[type="radio"],
+.quiz-option input[type="checkbox"] {
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.quiz-option span {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex: 1 !important;
+    line-height: 1.5 !important;
+}
+
+/* Ensure labels wrap properly */
+label[style*="display:flex"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 16px !important;
+    background: #334155 !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    margin-bottom: 0 !important;
+}
+
+label[style*="display:flex"] input {
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+label[style*="display:flex"] span {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex: 1 !important;
+    line-height: 1.5 !important;
+}
+
+/* Override any inline styles that might break layout */
+div[style*="display:grid;gap:14px;"] > * {
+    margin-bottom: 0 !important;
+}
+</style>
+
 <div class="card" style="max-width:900px;margin:40px auto;padding:40px;background:#dce5fa;color:white;border-radius:20px;">
     <h2 style="text-align:center;color:#8b5cf6;">Quiz: <?= htmlspecialchars($quiz['title']) ?></h2>
     <p style="text-align:center;color:#94a3b8;">
@@ -210,15 +304,20 @@ include 'includes/header.php';
                     </p>
                 <?php endif; ?>
                 <div style="display:grid;gap:14px;">
-                    <?php foreach(['A','B','C','D'] as $opt):
-                        $text = $q["option_".strtolower($opt)];
-                        if(trim($text)):
+                    <?php foreach($q['options'] as $opt): 
+                        $opt = trim($opt);
+                        if($opt):
                     ?>
+                        <!-- Using label wrapper with proper styling -->
                         <label style="display:flex;align-items:center;gap:15px;padding:16px;background:#334155;border-radius:12px;cursor:pointer;">
-                            <input type="<?= $q['question_type']==='multiple'?'checkbox':'radio' ?>" 
-                                   name="q<?= $q['id'] ?><?= $q['question_type']==='multiple'?'[]':'' ?>" 
-                                   value="<?= $opt ?>" <?= $q['question_type']==='radio'?'required':'' ?>>
-                            <span><strong><?= $opt ?>)</strong> <?= htmlspecialchars($text) ?></span>
+                            <input 
+                                type="<?= $q['question_type']==='multiple' ? 'checkbox' : 'radio' ?>"
+                                name="q<?= $q['id'] ?><?= $q['question_type']==='multiple'?'[]':'' ?>"
+                                value="<?= htmlspecialchars($opt) ?>"
+                                <?= $q['question_type']==='radio'?'required':'' ?>
+                                style="margin:0;"
+                            >
+                            <span><strong><?= chr(65 + $i) ?>)</strong> <?= htmlspecialchars($opt) ?></span>
                         </label>
                     <?php endif; endforeach; ?>
                 </div>
