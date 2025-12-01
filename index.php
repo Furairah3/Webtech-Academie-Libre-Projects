@@ -744,7 +744,7 @@
   <!-- Header -->
   <header>
     <div class="container header-container">
-      <a href="index.html">
+      
         <img src="images/LOGO_H.png" alt="Académie Libre Logo" class="logo">
       </a>
       <ul class="nav-menu">
