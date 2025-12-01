@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/functions.php';
+require_once '../config/base.php';
 if(!is_admin()) die("Access denied");
 require_once '../config/db.php';
 
