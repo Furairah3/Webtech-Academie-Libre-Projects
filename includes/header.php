@@ -3,7 +3,7 @@ require_once 'functions.php';
 
 // Only load database connection + user data when someone is logged in
 if(is_logged_in()) {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/learnstep/config/db.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/../config/db.php';
 
     $stmt = $pdo->prepare("SELECT username, profile_pic FROM users WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
@@ -20,8 +20,8 @@ if(is_logged_in()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnStep</title>
-    <link rel="stylesheet" href="/learnstep/assets/css/style.css">
+    <title>Academie Libre</title>
+    <link rel="stylesheet" href="/../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -189,18 +189,18 @@ if(is_logged_in()) {
     <!-- Top Navbar (Fixed) -->
     <header class="navbar">
         <div class="nav-left">
-            <img src="/learnstep/images/LOGO_H.png" alt="LearnStep Logo">
+            <img src="/../images/LOGO_H.png" alt="Acadenie Libre Logo">
         </div>
         <input type="text" placeholder="Search resources...">
         <div class="profile">
             <?php if(is_logged_in()): ?>
-                <img src="/learnstep/assets/uploads/<?php echo $_SESSION['profile_pic']; ?>" 
+                <img src="/../assets/uploads/<?php echo $_SESSION['profile_pic']; ?>" 
                      alt="Profile" 
                      id="navbar-profile-img">
                 <span id="navbar-username"><?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
             <?php else: ?>
-                <a href="/learnstep/profile.php">
-                    <img src="/learnstep/assets/images/default-profile.jpg" alt="Profile">
+                <a href="/../profile.php">
+                    <img src="/../assets/images/default-profile.jpg" alt="Profile">
                     <span>Guest</span>
                 </a>
             <?php endif; ?>
