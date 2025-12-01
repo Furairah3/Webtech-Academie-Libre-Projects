@@ -1,11 +1,13 @@
 <?php
 require_once 'includes/functions.php';
+require_once 'config/base.php';
+
 if(!is_logged_in()) redirect('login.php');
 include 'includes/header.php';
 require_once 'config/db.php';
 ?>
+<link rel="stylesheet" href="<?= ASSETS_URL ?>/css/courses.css?v=<?= time(); ?>">
 
-<link rel="stylesheet" href="assets/css/courses.css?v=<?php echo time(); ?>">
 
 <div class="courses-container">
     <h1 class="courses-title">Available Courses</h1>
@@ -26,14 +28,14 @@ require_once 'config/db.php';
         ?>
             <div class="course-card">
                 <div class="course-image <?php echo $course['thumbnail'] ? '' : 'no-image'; ?>"
-                     style="<?php echo $course['thumbnail'] ? 'background-image:url(assets/uploads/'.$course['thumbnail'].');' : ''; ?>">
+                     style="<?php echo $course['thumbnail'] ? 'background-image:url(<?= ASSETS_URL ?>/uploads/courses/'.$course['thumbnail'].');' : ''; ?>">
                 </div>
                 <div class="course-content">
                     <h3 class="course-title"><?php echo htmlspecialchars($course['title']); ?></h3>
                     <p class="course-description">
                         <?php echo htmlspecialchars($course['description'] ?: 'No description available'); ?>
                     </p>
-                    <a href="course-view.php?id=<?php echo $course['id']; ?>" class="course-btn">
+                    <a href="<?= BASE_URL ?>/course-view.php?id=<?php echo $course['id']; ?>" class="course-btn">
                         Enter Course
                     </a>
                 </div>
