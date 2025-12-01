@@ -11,15 +11,15 @@ The project includes a CMS for content management, a GitHub repository for full 
 # Project Links
 ### GitHub Repository
 
-👉 https://github.com/Furairah3/Webtech-Academie-Libre-Projects.git
+https://github.com/Furairah3/Webtech-Academie-Libre-Projects.git
 
 ### CMS / WordPress
 
-👉 https://fzakariyaouidi.wixsite.com/academie-libre
+https://fzakariyaouidi.wixsite.com/academie-libre
 
 ### Live Server
 
-👉 http://169.239.251.102:341/~chidima.ugwu/Webtech-Academie-Libre-Projects
+http://169.239.251.102:341/~chidima.ugwu/Webtech-Academie-Libre-Projects
 
 Team Member Responsible for Starting the VM
 
@@ -113,7 +113,7 @@ sudo systemctl restart apache2
 
 4. Access the Live Site
 
-👉 http://169.239.251.102:341/~chidima.ugwu/Webtech-Academie-Libre-Projects
+http://169.239.251.102:341/~chidima.ugwu/Webtech-Academie-Libre-Projects
 
 ### FEATURES INCLUDED
 Learning Features
