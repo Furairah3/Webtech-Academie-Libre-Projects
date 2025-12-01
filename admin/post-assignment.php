@@ -1,6 +1,7 @@
 <?php require_once 'auth.php'; ?>
 <?php 
 require_once '../config/db.php';
+require_once '../config/base.php';
 $courses = $pdo->query("SELECT * FROM courses ORDER BY title")->fetchAll();
 
 if($_POST && isset($_POST['module_id'])) {
