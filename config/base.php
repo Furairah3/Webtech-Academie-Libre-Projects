@@ -19,4 +19,3 @@ if (!defined('BASE_URL')) {
     define('UPLOADS_URL', BASE_URL . '/uploads');
     define('ADMIN_URL', BASE_URL . '/admin');
 }
-?>
