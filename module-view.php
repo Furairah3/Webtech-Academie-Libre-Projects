@@ -201,7 +201,7 @@ $sub = $submission->fetch();
     <?php else: ?>
         <form action="upload-assignment.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="module_id" value="<?= (int)$module_id ?>">
-            <p><strong>Upload your answer (PDF, DOCX, ZIP):</strong></p>
+            <p style=" color: white; !important"  ><strong>Upload your answer (PDF, DOCX, ZIP):</strong></p>
             <input type="file" name="assignment_file" required accept=".pdf,.doc,.docx,.zip" style="margin:15px 0;padding:10px;background:#334155;border-radius:8px;">
             <button type="submit" class="btn" style="background:#f59e0b;padding:16px 40px;font-size:1.4rem;">
                 Submit Assignment
