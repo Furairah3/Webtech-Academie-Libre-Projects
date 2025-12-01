@@ -40,22 +40,22 @@ include 'includes/admin-header.php';
     <!-- Quick Actions -->
     <h2 style="color:#f59e0b; text-align:center; margin:50px 0 30px;">Quick Actions</h2>
     <div class="grid">
-        <a href="add_course.php" class="card text-center" style="background:#1e40af;padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/add_course.php" class="card text-center" style="background:#1e40af;padding:40px;">
             <h3>Add New Course</h3>
         </a>
-        <a href="add_module.php" class="card text-center" style="background:#7c3aed;padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/add_module.php" class="card text-center" style="background:#7c3aed;padding:40px;">
             <h3>Add Module</h3>
         </a>
-        <a href="add_lecture.php" class="card text-center" style="background:#06b6d4;padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/add_lecture.php" class="card text-center" style="background:#06b6d4;padding:40px;">
             <h3>Add Lectures</h3>
         </a>
-        <a href="add_quiz.php" class="card text-center" style="background:#8b5cf6;padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/add_quiz.php" class="card text-center" style="background:#8b5cf6;padding:40px;">
             <h3>Create Quiz</h3>
         </a>
-        <a href="post-assignment.php" class="card text-center" style="background:#f59e0b;padding:padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/post-assignment.php" class="card text-center" style="background:#f59e0b;padding:padding:40px;">
             <h3>Post Assignment</h3>
         </a>
-        <a href="view_assignments.php" class="card text-center" style="background:#dc2626;padding:40px;">
+        <a href="<?= BASE_URL ?>/admin/view_assignments.php" class="card text-center" style="background:#dc2626;padding:40px;">
             <h3>View Submissions</h3>
         </a>
     </div>
