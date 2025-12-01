@@ -1,4 +1,5 @@
 <?php 
+require_once 'config/base.php';
 require_once 'includes/functions.php';
 if(is_logged_in()) {
     if($_SESSION['role'] === 'admin') {
