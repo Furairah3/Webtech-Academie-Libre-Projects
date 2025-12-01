@@ -19,6 +19,7 @@ if(is_logged_in()) redirect('dashboard.php');
 
     <p class="text-center mt-20">
         Already have an account? <a href="login.php" style="color:#06b6d4;">Login here</a>
+        Want to go back home? <a href="index.php" style="color:#06b6d4; font-weight:bold;">Register here</a>
     </p>
 </div>
 
