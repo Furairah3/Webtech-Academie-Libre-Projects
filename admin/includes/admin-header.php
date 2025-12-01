@@ -15,8 +15,8 @@ if(is_logged_in()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin • Academie Libre</title>
-    <link rel="stylesheet" href="/../../assets/css/style.css">
-    <link rel="stylesheet" href="/../../assets/css/admin.css">
+    <link rel="stylesheet" href="/../assets/css/style.css">
+    <link rel="stylesheet" href="/../assets/css/admin.css">
     <style>
         .admin-header { background:#1e293b; padding:1rem 0; border-bottom:4px solid #f59e0b; }
         .admin-header .logo { font-size:2rem; font-weight:bold; }
