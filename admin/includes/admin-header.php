@@ -15,8 +15,8 @@ if(is_logged_in()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin • Academie Libre</title>
-    <link rel="stylesheet" href="/learnstep/assets/css/style.css">
-    <link rel="stylesheet" href="/learnstep/assets/css/admin.css">
+    <link rel="stylesheet" href="/../../assets/css/style.css">
+    <link rel="stylesheet" href="/../../assets/css/admin.css">
     <style>
         .admin-header { background:#1e293b; padding:1rem 0; border-bottom:4px solid #f59e0b; }
         .admin-header .logo { font-size:2rem; font-weight:bold; }
@@ -39,8 +39,8 @@ if(is_logged_in()) {
                 <a href="post-assignment.php">Post Assignment</a>
                 <a href="view_assignments.php">View Submissions</a>
 
-                <a href="/learnstep/profile.php" style="display:flex;align-items:center;gap:10px;color:#e2e8f0;">
-                    <img src="/learnstep/assets/uploads/<?php echo $_SESSION['profile_pic']; ?>" 
+                <a href="/../../profile.php" style="display:flex;align-items:center;gap:10px;color:#e2e8f0;">
+                    <img src="/../../assets/uploads/<?php echo $_SESSION['profile_pic']; ?>" 
                          style="width:40px;height:40px;border-radius:50%;border:2px solid #f59e0b;">
                     <span><?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
                 </a>
