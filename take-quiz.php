@@ -183,8 +183,8 @@ if(isset($_GET['result'])) {
     $r = $_SESSION['quiz_result'] ?? null; unset($_SESSION['quiz_result']);
     include 'includes/header.php';
     // Your beautiful result screen here
-    exit();
-}
+    //exit();
+} 
 
 include 'includes/header.php';
 ?>
