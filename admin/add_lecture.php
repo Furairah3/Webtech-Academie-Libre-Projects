@@ -87,7 +87,7 @@ include 'includes/admin-header.php';
     <h3 style="color:#1e293b;margin-bottom:20px;text-align:center;">Add New YouTube Lecture</h3>
     <form method="POST">
         <select name="module_id" required 
-                style="width:100%;padding:15px;margin:15px 0;border-radius:12px;border:1px solid #cbd5e1;background:white;">
+                style="width:100%;padding:15px;margin:15px 0;border-radius:12px;border:1px solid #cbd5e1;">
             <option value="">Select Module</option>
             <?php foreach($modules as $m): ?>
                 <option value="<?= $m['id'] ?>">
